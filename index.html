@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Home Shield Replica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fraunces:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1428D4;
+            --text-dark: #000052;
+            --form-bg: #D4E9FF;
+            --input-border: #CCCCCC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Section --- */
+        header {
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust based on your logo aspect ratio */
+            display: block;
+        }
+
+        .phone-cta {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 10px;
+        }
+
+        .hero-banner {
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            /* REPLACING THE BACKGROUND IMAGE: 
+               The user noted the tan block on the right is part of this image. */
+            background-image: url('images/ahsbg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+
+        }
+
+        .hero-content-left {
+            flex: 1.2;
+            padding: 80px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-content-left h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 4.5rem;
+            line-height: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .hero-content-left p {
+            font-size: 1.15rem;
+            max-width: 450px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* --- Form Section --- */
+        .hero-form-right {
+            flex: 0.8;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quote-card {
+            background-color: var(--form-bg);
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .quote-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .form-group {
+            flex: 1 1 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.half {
+            flex: 1 1 calc(50% - 5px);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        input::placeholder {
+            color: #666;
+        }
+
+        .disclaimer {
+            font-size: 0.65rem;
+            color: var(--primary-blue);
+            margin: 15px 0;
+            line-height: 1.3;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-banner {
+                flex-direction: column;
+                background-image: none; /* Mobile would likely need a stacked background */
+                background-color: #eee;
+            }
+            .hero-content-left {
+                color: var(--text-dark);
+                padding: 40px 20px;
+            }
+        }
+
+        /* --- Stats Section --- */
+        .stats-section {
+            background-color: var(--white);
+            padding: 100px 0; /* Generous vertical padding for a spacious feel */
+        }
+
+        .stats-wrapper {
+            display: flex;
+            justify-content: space-around; /* Distribute columns with ample space */
+            gap: 20px;
+        }
+
+        .stat-column {
+            flex: 1; /* Equal-width columns */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center-align all items horizontally */
+            text-align: center;
+        }
+
+        /* Large Serif Headings */
+        .stat-column h3 {
+            font-family: 'Fraunces', serif; /* Matching the serif headline from hero */
+            font-size: 3rem; 
+            color: var(--text-dark); /* Using the defined deep blue */
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        /* For the * in "25 times*" */
+        .stat-column h3 sup {
+            font-size: 0.6em; /* Scale the asterisk */
+            vertical-align: super;
+        }
+
+        /* Define the color for the descriptive text in your :root if it's new */
+        :root {
+            /* ... previous variables ... */
+            --text-grey-blue: #4a5568; /* Slate grey-blue for text */
+        }
+
+        /* Supporting Sans-Serif Text */
+        .stat-column .stat-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-grey-blue);
+            line-height: 1.5;
+            max-width: 280px; /* Prevents long lines, keeping them legible */
+            margin-bottom: 20px;
+        }
+
+        /* Specific positioning for the column with a footnote */
+        .stat-column.with-footnote {
+            position: relative; /* Container for the absolute footnote */
+            padding-bottom: 70px; /* Reserve space for the footnote at the bottom */
+        }
+
+        /* Style for the tiny footnote */
+        .stat-footnote {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem; /* Very small text */
+            color: var(--text-grey-blue);
+            line-height: 1.4;
+            max-width: 250px;
+            /* Position at the very bottom of the column's reserved space */
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%); /* Horizontal centering */
+            margin: 0;
+        }
+
+        /* --- Mobile Responsiveness for Stats --- */
+        @media (max-width: 768px) {
+            .stats-wrapper {
+                flex-direction: column; /* Stack columns on mobile */
+                gap: 50px; /* More vertical space between items */
+                align-items: center;
+            }
+            .stat-column {
+                max-width: 320px;
+            }
+            .stat-column.with-footnote {
+                padding-bottom: 0; /* Reset absolute container on mobile */
+            }
+            .stat-footnote {
+                position: static; /* Let it flow naturally below description on mobile */
+                transform: none;
+                margin-top: 20px;
+                width: auto;
+            }
+        }
+
+        /* --- Definition Section --- */
+        .definition-section {
+            background-color: #f5efd7; /* Pale cream background */
+            padding: 100px 0;
+        }
+
+        .info-card {
+            background-color: #BEE1F6; /* Light blue box */
+            border-radius: 12px;
+            padding: 60px;
+            position: relative; /* Essential for the absolute graphic positioning */
+        }
+
+        /* The overlapping geometric image */
+        .corner-graphic {
+            position: absolute;
+            top: -120px; /* Adjust based on your specific image asset */
+            right: -20px;
+            width: 160px; /* Adjust size to match screenshot */
+            z-index: 10;
+        }
+
+        .info-grid {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .info-left, .info-right {
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .section-title sup {
+            font-size: 0.5em;
+            vertical-align: middle;
+        }
+
+        .main-text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .badges-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            height: 45px;
+            border-radius: 4px;
+        }
+
+        .small-print {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .small-print a {
+            color: var(--primary-blue);
+            text-decoration: underline;
+        }
+
+        /* Features List Styling */
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .features-list p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        /* Custom Checkmark Icon */
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            margin-top: 4px;
+        }
+
+        /* Creating the checkmark with CSS border */
+        .check-icon::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* --- Responsive Logic --- */
+        @media (max-width: 992px) {
+            .info-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .corner-graphic {
+                width: 100px;
+                top: -20px;
+                right: 0;
+            }
+        }
+
+        /* --- Coverage Section --- */
+        .coverage-section {
+            background-color: #f5efd7; 
+            padding: 20px 0;
+        }
+
+        .coverage-grid {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start; /* Aligns the top of the text and image */
+            margin-bottom: 60px;
+        }
+
+        .coverage-content {
+            flex: 1;
+        }
+
+        .coverage-title {
+            font-family: 'Fraunces', serif;
+            font-size: 54px;
+            color: var(--text-dark);
+            line-height: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .coverage-desc {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 440px;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        .dashed-divider {
+            border: none;
+            border-top: 1px dashed #000052;
+            opacity: 0.3;
+            margin-bottom: 40px;
+            max-width: 440px;
+        }
+
+        .guarantee-block {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .guarantee-icon {
+            width: 80px;
+            height: auto;
+        }
+
+        .guarantee-text h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .guarantee-text p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        /* Right Side Image & Text Styling */
+        .coverage-image-block {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Aligns both image and text to the right */
+        }
+
+        .main-coverage-asset {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+        }
+
+        .plus-more {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800; /* Extra bold for emphasis */
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-top: 25px;
+            margin-right: -120px; /* Slight offset to match visual alignment in grid */
+            align-self: center;
+        }
+
+        /* CTA Area */
+        .coverage-cta-area {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-primary-large {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 18px 60px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary-large:hover {
+            background-color: #0d1ba3; /* Darkens slightly on hover */
+        }
+
+        .cta-phone {
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .coverage-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .coverage-content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .coverage-desc, .dashed-divider, .guarantee-block {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .coverage-image-block {
+                align-items: center;
+            }
+            .plus-more {
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background-color: var(--primary-blue); /* Using the vibrant blue from the header/hero */
+            padding: 100px 0;
+            color: var(--white);
+            border-radius: 20px; /* Optional: adds the rounded look from the screenshot edges */
+            margin: 40px 20px; /* Centers the whole blue block with some breathing room */
+        }
+
+        .testimonials-title {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            gap: 80px;
+            justify-content: center;
+        }
+
+        .testimonial-card {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .stars-row {
+            margin-bottom: 25px;
+        }
+
+        .stars-row img {
+            height: 24px; /* Adjust based on your star asset size */
+            width: auto;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.5;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                flex-direction: column;
+                gap: 50px;
+                padding: 0 20px;
+            }
+            .testimonials-title {
+                font-size: 2.5rem;
+                padding: 0 10px;
+            }
+            .testimonials-section {
+                margin: 20px 10px;
+                padding: 60px 0;
+            }
+        }
+
+        /* --- Footer & Final CTA Section --- */
+        .footer-cta-section {
+            background-color: #12141D; /* Deep dark charcoal/black */
+            padding-top: 80px;
+            text-align: center;
+            color: var(--white);
+            margin-top: 180px;
+        }
+
+        .footer-graphic {
+            margin-bottom: 40px;
+            margin-top: -230px;
+        }
+
+        .footer-logo-graphic {
+            width: 200px; /* Adjust based on your specific asset */
+            height: auto;
+        }
+
+        .footer-headline {
+            font-family: 'Fraunces', serif;
+            font-size: 54px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .footer-subheadline {
+            font-family: 'Inter', sans-serif;
+            font-size: 23px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .footer-phone {
+            margin: 30px 0 80px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        /* --- Fine Print Wrapper --- */
+        .fine-print-wrapper {
+            background-color: var(--white); /* Transitions to white background at the very bottom */
+            padding: 40px 0;
+            color: #666; /* Grey text for legal info */
+        }
+
+        /* NJ Disclaimer Box */
+        .nj-disclaimer {
+            background-color: #F8F5E6; /* Cream/Tan background to match middle sections */
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .legal-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .legal-disclaimer {
+            margin-bottom: 30px;
+            color: #b5b5b5; /* Light grey for the secondary disclaimer */
+        }
+
+        .legal-disclaimer a {
+            color: var(--primary-blue);
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            color: #b5b5b5;
+        }
+
+        .footer-links a {
+            color: var(--text-dark);
+            text-decoration: underline;
+            font-weight: 400;
+        }
+
+        .footer-links .divider {
+            color: #ccc;
+        }
+
+        .copyright {
+            margin-right: 15px;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .footer-headline {
+                font-size: 3rem;
+            }
+            .footer-subheadline {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .footer-links .divider {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/ahslogo.png" alt="American Home Shield">
+            </div>
+            <a href="tel:18556320306" class="phone-cta">Give us a call 1-855-632-0306</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-banner">
+                
+                <div class="hero-content-left">
+                    <h1> <br></h1>
+                    <p></p>
+                </div>
+
+                <div class="hero-form-right">
+                    <div class="quote-card">
+                        <h2>Let’s get you your free quote</h2>
+                        
+                        <form action="#">
+                            <div class="form-grid">
+                                <div class="form-group half">
+                                    <input type="text" placeholder="First name" required>
+                                </div>
+                                <div class="form-group half">
+                                    <input type="text" placeholder="Last name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="ZIP code" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email" required>
+                                </div>
+                            </div>
+
+                            <p class="disclaimer">
+                                You are requesting information from AHS regarding our products and services. By clicking the button below, you consent to receive email at the email address provided, as well as phone calls and text messages (including prerecorded, autodialed and/or AI-generated calls and texts) at the phone number you provided. You agree to our Privacy Policy and Terms of Use.
+                            </p>
+
+                            <button type="submit" class="btn-submit">Get a Free Quote</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container stats-wrapper">
+            
+            <div class="stat-column">
+                <h3>50+ years in<br>the biz</h3>
+                <p class="stat-desc">Turning homeowners frowns upside down since 1971</p>
+            </div>
+
+            <div class="stat-column">
+                <h3>2 million+<br>members</h3>
+                <p class="stat-desc">2 million reasons and counting to choose AHS coverage</p>
+            </div>
+
+            <div class="stat-column with-footnote">
+                <h3>25 times<sup>*</sup></h3>
+                <p class="stat-desc">You're 25 times more likely to use AHS than your homeowners insurance.</p>
+                <p class="stat-footnote">*Calculated based on the 2025 AHS claims data compared to insurance claims from Insurance Information Institute.</p>
+            </div>
+
+            <div class="stat-column">
+                <h3>$4 billion</h3>
+                <p class="stat-desc">We've paid more than $4 billion in home warranty claims over the last 7 years.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="definition-section">
+        <div class="container">
+            <div class="info-card">
+                
+                <img src="images/footer-logo.png" alt="" class="corner-graphic">
+
+                <div class="info-grid">
+                    <div class="info-left">
+                        <h2 class="section-title">So, what is a home warranty<sup>&dagger;</sup> anyway?</h2>
+                        <p class="main-text">
+                            We offer coverage for parts of your major home systems like heating and air conditioning, electrical and plumbing, kitchen and laundry appliances, and much more (so you can stress less).
+                        </p>
+
+                        <div class="badges-row">
+                            <img src="images/accb.png" alt="BBB Accredited Business" class="badge">
+                            <img src="images/aa.png" alt="Best Company 2026" class="badge">
+                        </div>
+
+                        <p class="small-print">
+                            See the <a href="#">plan agreement</a> for coverage details, including service fees, limitations and exclusions. Coverage limits and charges for non-covered items may apply.
+                        </p>
+                    </div>
+
+                    <div class="info-right">
+                        <ul class="features-list">
+                            <li>
+                                <span class="check-icon"></span>
+                                <p>It's reassurance when covered systems and appliances stop working in your home.</p>
+                            </li>
+                            <li>
+                                <span class="check-icon"></span>
+                                <p>Complements your homeowner’s insurance to cover things that insurance doesn’t.</p>
+                            </li>
+                            <li>
+                                <span class="check-icon"></span>
+                                <p>Members enjoy perks such as discounts on new appliances and services like pre-season HVAC maintenance, tech set-up and installation, and more.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage-section">
+        <div class="container">
+            <div class="coverage-grid">
+                
+                <div class="coverage-content">
+                    <h2 class="coverage-title">What do we cover?<br>More than you think.</h2>
+                    <p class="coverage-desc">
+                        Our home warranties<sup>&dagger;</sup> protect parts of up to 23 systems and appliances, and you can customize your plan with additional coverage for pool and built-in spa equipment, electronics, and more.
+                    </p>
+
+                    <hr class="dashed-divider">
+
+                    <div class="guarantee-block">
+                        <img src="images/badge.png" alt="Guarantee Badge" class="guarantee-icon">
+                        <div class="guarantee-text">
+                            <h3>30-Day Workmanship Guarantee</h3>
+                            <p>If you have an issue with your completed repair within 30 days of service, we'll send a Pro back out for free.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coverage-image-block">
+                    <img src="images/cover.png" alt="Coverage Icons" class="main-coverage-asset">
+                    
+                    <p class="plus-more">Plus much more!</p>
+                </div>
+            </div>
+
+            <div class="coverage-cta-area">
+                <button class="btn-primary-large">Get a Free Quote</button>
+                <p class="cta-phone">Or call us 1-855-632-0306</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-title">Hear from happy homeowners</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars-row">
+                        <img src="images/white-stars.png" alt="5 Stars">
+                    </div>
+                    <p class="testimonial-text">
+                        By far one of the best investments I’ve ever made with my home. Too many unexpected things happen with home ownership, and AHS has made it so I don’t have to worry about them financially. They have saved me hundreds to thousands of dollars a year from HVAC to appliance repairs.
+                    </p>
+                    <p class="testimonial-author">Donny M. | Oklahoma</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars-row">
+                        <img src="images/white-stars.png" alt="5 Stars">
+                    </div>
+                    <p class="testimonial-text">
+                        Love being able to file a service request online 24/7. The businesses and technicians that come to fix my appliances, etc. are always "first rate," professional, and competent.
+                    </p>
+                    <p class="testimonial-author">Hazel W. | New Jersey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-cta-section">
+        <div class="container">
+            
+            <div class="footer-graphic">
+                <img src="images/footer-logo.png" alt="" class="footer-logo-graphic">
+            </div>
+
+            <div class="footer-cta-content">
+                <h2 class="footer-headline">Don't Worry. Be Warranty.</h2>
+                <p class="footer-subheadline">Have a plan for your home when things don't go according to plan</p>
+                
+                <button class="btn-primary-large">Get a Free Quote</button>
+                <p class="footer-phone">Or give us a call 1-855-632-0306</p>
+            </div>
+        </div>
+
+        <div class="fine-print-wrapper">
+            <div class="container">
+                
+                <div class="nj-disclaimer">
+                    <p>&dagger; New Jersey Residents: The product being offered is a service contract and is separate and distinct from any product or service warranty which may be provided by the home builder or manufacturer.</p>
+                </div>
+
+                <div class="legal-info">
+                    <p class="legal-disclaimer">
+                        See the plan <a href="#">plan agreement</a> for coverage details, including service fees, limitations and exclusions. Coverage limits and charges for non-covered items may apply.
+                    </p>
+                    
+                    <div class="footer-links">
+                        <span class="copyright">&copy;2026 American Home Shield Corporation. All Rights Reserved.</span>
+                        <a href="#">Privacy Policy</a>
+                        <span class="divider">|</span>
+                        <a href="#">Terms of Use</a>
+                        <span class="divider">|</span>
+                        <a href="#">Unsubscribe</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
